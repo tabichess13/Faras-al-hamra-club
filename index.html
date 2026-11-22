@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faras Al Hamra – Club d’échecs à Marrakech</title>
+<meta name="description" content="Faras Al Hamra, club d’échecs à Marrakech. Coach Issam Tabich, Dar Chabab, un tournoi chaque mois.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Outfit:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f7f0e6;--fg:#26171a;--muted:#6d5a56;--red:#a3231c;--red-d:#6f1410;--gold:#c9962b;--card:#fffaf2;--line:#e0cfba;--on-red:#fff6ea;--l:#f1dfc6;--d:#a3231c}
+@media (prefers-color-scheme:dark){:root{--bg:#190f0e;--fg:#f5e9dd;--muted:#bda99d;--red:#d94a3e;--card:#251715;--line:#443029;--l:#3b2b26}}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1.05rem/1.65 Outfit,system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 1.25rem}
+
+/* nav */
+header.bar{position:sticky;top:0;z-index:20;background:var(--red-d);color:var(--on-red);border-bottom:3px solid var(--gold)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
+.logo{font:700 1.35rem "Cormorant Garamond",Georgia,serif;text-decoration:none;display:flex;gap:.5rem;align-items:center}
+.logo span{color:var(--gold);font-size:1.6rem}
+.bar ul{display:flex;gap:1.3rem;list-style:none;margin:0;padding:0;font-size:.95rem}
+.bar ul a{text-decoration:none;opacity:.85}
+.bar ul a:hover{opacity:1;color:var(--gold)}
+.burger{display:none;background:none;border:1.5px solid var(--on-red);color:var(--on-red);border-radius:4px;padding:.35rem .7rem;font:inherit;cursor:pointer}
+
+/* hero */
+.hero{background:var(--red);color:var(--on-red);position:relative;overflow:hidden;
+background-image:
+radial-gradient(circle at 50% 50%,transparent 0 22%,#ffffff12 22% 24%,transparent 24%),
+conic-gradient(from 45deg at 50% 50%,#0000000f 0 25%,transparent 0 50%,#0000000f 0 75%,transparent 0);
+background-size:64px 64px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;padding-top:4rem;padding-bottom:4.5rem}
+.hero h1{font-size:clamp(3.2rem,8.5vw,6rem);font-weight:700}
+.hero p{font-size:1.2rem;max-width:32rem;margin:1.3rem 0 2rem;opacity:.95}
+.tag{display:inline-block;border:1.5px solid var(--gold);color:var(--gold);padding:.3rem .9rem;border-radius:99px;font-size:.9rem;margin-bottom:1.3rem}
+.btn{display:inline-block;background:var(--gold);color:#2a1408;padding:.9rem 1.6rem;border-radius:4px;text-decoration:none;font-weight:600;border:0;font-size:1rem;font-family:inherit;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--on-red);border:1.5px solid var(--on-red);margin-left:.6rem}
+.board{display:grid;grid-template-columns:repeat(8,1fr);aspect-ratio:1;max-width:440px;width:100%;margin:0 auto;border:7px solid var(--gold);border-radius:6px;overflow:hidden;box-shadow:0 20px 50px #0006}
+.board div{display:grid;place-items:center;font-size:clamp(1.4rem,4.8vw,2.4rem);line-height:1}
+.board .l{background:#f1dfc6}.board .d{background:#7d1814}
+.board i{font-style:normal;opacity:0;transform:translateY(-14px);animation:drop .5s ease forwards;animation-delay:var(--t)}
+.board .w{color:#fff;text-shadow:0 1px 3px #0008}.board .b{color:#170b09}
+@keyframes drop{to{opacity:1;transform:none}}
+
+/* sections */
+section{padding:4.5rem 0}
+h2{font-size:clamp(2.2rem,5vw,3.4rem);margin-bottom:1rem;color:var(--red)}
+.lead{max-width:40rem;color:var(--muted);font-size:1.12rem}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2rem}
+.box{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);padding:1.6rem;border-radius:4px}
+.box .ic{font-size:2.2rem;color:var(--red);line-height:1}
+.box h3{font-size:1.6rem;margin:.6rem 0 .4rem}
+.box p{margin:0;color:var(--muted)}
+.band{background:var(--card);border-block:1px solid var(--line)}
+.coach{display:grid;grid-template-columns:240px 1fr;gap:2.5rem;align-items:center}
+.portrait{aspect-ratio:1;background:var(--red);color:var(--gold);display:grid;place-items:center;font-size:8rem;border:6px solid var(--gold);border-radius:50%}
+.coach h3{font-size:2.6rem;margin-bottom:.6rem}
+.levels{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
+.levels span{border:1.5px solid var(--red);color:var(--red);border-radius:99px;padding:.25rem .95rem;font-size:.95rem}
+.tour{background:var(--red-d);color:var(--on-red);border-radius:8px;padding:3rem;display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center;border:2px solid var(--gold)}
+.tour .big{font:700 7rem/1 "Cormorant Garamond",Georgia,serif;color:var(--gold);text-align:center}
+.tour .big small{display:block;font:500 1rem Outfit,sans-serif;color:var(--on-red);opacity:.9}
+.tour h2{color:var(--on-red)}
+.tour p{margin:0 0 1.4rem;max-width:36rem;opacity:.95}
+.place{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.place .pin{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:2rem}
+.place .pin b{font:700 2rem "Cormorant Garamond",Georgia,serif;color:var(--red);display:block}
+
+/* contact */
+.contact{background:var(--red);color:var(--on-red)}
+.contact h2{color:var(--on-red)}
+.contact .lead{color:var(--on-red);opacity:.92}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.num{display:block;font:700 2.6rem "Cormorant Garamond",Georgia,serif;margin:1rem 0;text-decoration:none;color:var(--gold)}
+form{background:var(--card);color:var(--fg);padding:1.6rem;border-radius:6px;display:grid;gap:1rem}
+label{font-weight:500;font-size:.95rem;display:grid;gap:.3rem}
+input,select,textarea{font:inherit;padding:.7rem .8rem;border:1.5px solid var(--line);border-radius:4px;background:var(--bg);color:var(--fg);width:100%}
+textarea{min-height:90px;resize:vertical}
+form .btn{background:var(--red);color:var(--on-red)}
+footer{background:var(--red-d);color:var(--on-red);text-align:center;padding:1.6rem 1rem;font-size:.9rem}
+
+@media(max-width:800px){
+.burger{display:block}
+.bar ul{display:none;position:absolute;top:62px;left:0;right:0;background:var(--red-d);flex-direction:column;padding:1rem 1.25rem;gap:.9rem;border-bottom:3px solid var(--gold)}
+.bar ul.open{display:flex}
+.hero .wrap,.cols,.coach,.tour,.place,.contact .wrap{grid-template-columns:1fr}
+.portrait{max-width:170px;font-size:5.5rem}
+.tour{padding:1.8rem}.tour .big{font-size:5rem}
+.btn.ghost{margin:.7rem 0 0}
+section{padding:3.2rem 0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.board i{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+<div class="wrap">
+<a class="logo" href="#top"><span>♞</span> Faras Al Hamra</a>
+<button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
+<ul id="menu">
+<li><a href="#club">Le club</a></li><li><a href="#coach">Le coach</a></li><li><a href="#tournoi">Tournoi</a></li><li><a href="#lieu">Lieu</a></li><li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</header>
+
+<main id="top">
+<div class="hero">
+<div class="wrap">
+<div>
+<span class="tag">Marrakech · Dar Chabab</span>
+<h1>Faras Al Hamra</h1>
+<p>Le club d’échecs de la Ville Rouge. Apprenez avec un coach, jouez chaque semaine et mesurez-vous à tous les niveaux lors de notre tournoi mensuel.</p>
+<a class="btn" href="#contact">Rejoindre le club</a><a class="btn ghost" href="#tournoi">Le tournoi du mois</a>
+</div>
+<div class="board" id="board" role="img" aria-label="Échiquier avec toutes les pièces en position de départ"></div>
+</div>
+</div>
+
+<section id="club">
+<div class="wrap">
+<h2>Le club</h2>
+<p class="lead">Faras Al Hamra réunit à Marrakech les joueurs d’échecs de tous âges et de tous niveaux. Ici, on apprend, on s’entraîne et on joue dans une ambiance conviviale.</p>
+<div class="cols">
+<div class="box"><div class="ic">♙</div><h3>Apprendre</h3><p>Règles, ouvertures, tactique et finales, expliquées étape par étape par un entraîneur.</p></div>
+<div class="box"><div class="ic">♘</div><h3>S’entraîner</h3><p>Des parties et des exercices pour progresser régulièrement, à votre rythme.</p></div>
+<div class="box"><div class="ic">♔</div><h3>Compétir</h3><p>Un tournoi chaque mois pour tester vos progrès face à d’autres joueurs.</p></div>
+</div>
+</div>
+</section>
+
+<section id="coach" class="band">
+<div class="wrap coach">
+<div class="portrait" aria-hidden="true">♚</div>
+<div>
+<h2>Coach Issam Tabich</h2>
+<p class="lead">Issam Tabich encadre le club. Il accompagne les débutants dans leurs premiers pas et aide les joueurs plus avancés à perfectionner leur stratégie.</p>
+<div class="levels"><span>Débutants</span><span>Intermédiaires</span><span>Avancés</span></div>
+</div>
+</div>
+</section>
+
+<section id="tournoi">
+<div class="wrap">
+<div class="tour">
+<div class="big">1<small>tournoi<br>par mois</small></div>
+<div>
+<h2>Le tournoi mensuel</h2>
+<p>Chaque mois, le club organise un tournoi. Parties sérieuses, adversaires variés, bonne humeur : c’est le rendez-vous de tous les membres. Contactez-nous pour connaître la date du prochain.</p>
+<a class="btn" href="#contact">Demander la date</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="lieu" class="band">
+<div class="wrap place">
+<div>
+<h2>Où nous trouver</h2>
+<p class="lead">Le club vous accueille à la Dar Chabab, dans la ville de Marrakech.</p>
+</div>
+<div class="pin"><b>Dar Chabab</b>Marrakech, Maroc</div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<div class="wrap">
+<div>
+<h2>Rejoignez-nous</h2>
+<p class="lead">Pour les inscriptions et les tarifs, envoyez-nous un message directement. Nous vous répondons avec plaisir.</p>
+<a class="num" href="tel:+212666231111" id="tel">06 66 23 11 11</a>
+<a class="btn" id="wa" href="https://wa.me/212666231111">Message WhatsApp</a>
+</div>
+<form id="form">
+<label>Votre nom<input id="nom" required autocomplete="name"></label>
+<label>Votre niveau
+<select id="niv"><option>Débutant</option><option>Intermédiaire</option><option>Avancé</option></select></label>
+<label>Message<textarea id="msg" placeholder="Je souhaite rejoindre le club…"></textarea></label>
+<button class="btn" type="submit">Envoyer par WhatsApp</button>
+</form>
+</div>
+</section>
+</main>
+
+<footer>© 2026 Faras Al Hamra · Marrakech · Dar Chabab</footer>
+
+<script>
+(function(){
+/* Remplacez ici votre numéro (format international sans +) */
+var PHONE="212666231111", SHOWN="06 66 23 11 11";
+document.getElementById('tel').href="tel:+"+PHONE;
+document.getElementById('tel').textContent=SHOWN;
+document.getElementById('wa').href="https://wa.me/"+PHONE;
+
+var back=['♜','♞','♝','♛','♚','♝','♞','♜'],h='',n=0;
+for(var r=0;r<8;r++)for(var c=0;c<8;c++){
+var p='',s='',q=(r+c)%2?'d':'l';
+if(r===0){p=back[c];s='b'}if(r===1){p='♟';s='b'}
+if(r===6){p='♟';s='w'}if(r===7){p=back[c];s='w'}
+h+='<div class="'+q+' '+s+'">'+(p?'<i style="--t:'+(n++*45)+'ms">'+p+'</i>':'')+'</div>';
+}
+document.getElementById('board').innerHTML=h;
+
+var b=document.getElementById('burger'),m=document.getElementById('menu');
+b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+m.addEventListener('click',function(e){if(e.target.tagName==='A'){m.classList.remove('open');b.setAttribute('aria-expanded',false)}});
+
+document.getElementById('form').addEventListener('submit',function(e){
+e.preventDefault();
+var t="Bonjour, je suis "+document.getElementById('nom').value+" (niveau : "+document.getElementById('niv').value+"). "+document.getElementById('msg').value;
+window.open("https://wa.me/"+PHONE+"?text="+encodeURIComponent(t),"_blank");
+});
+})();
+</script>
+</body>
+</html>
